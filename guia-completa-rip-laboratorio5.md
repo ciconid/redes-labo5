@@ -177,7 +177,7 @@ En este labo **toda la configuración de routers se hace desde vtysh**. Los coma
 
 ---
 
-## 4. VLSM: Cálculo de subredes
+## 2. VLSM: Cálculo de subredes
 
 ### Bloque disponible
 ```
@@ -385,7 +385,7 @@ Salida esperada: `net.ipv4.ip_forward = 1`
 
 ---
 
-## 6. Instalación y habilitación de FRR
+## Instalación y habilitación de FRR
 
 **En todos los routers.**
 
@@ -424,7 +424,7 @@ ps aux | grep -E "zebra|ripd"
 
 ---
 
-## 7. Configuración de interfaces con vtysh
+## 6. Configuración de interfaces con vtysh
 
 ### Antes de configurar: identificar interfaces
 
@@ -444,19 +444,19 @@ vtysh
 ```
 configure terminal
 
-interface eth0
+interface eth2
  description Red3-sw_red3
  ip address 192.168.10.1/23
  no shutdown
 exit
 
-interface eth1
+interface eth0
  description Red1-sw_red1
  ip address 192.168.13.65/26
  no shutdown
 exit
 
-interface eth2
+interface eth1
  description Red2-sw_red2
  ip address 192.168.13.161/27
  no shutdown
@@ -582,8 +582,8 @@ write
 ### router_internet — 2 interfaces
 
 router_internet tiene dos interfaces:
-- `eth1`: Red31 → conecta con router3. **Esta la configuramos nosotros.**
-- `eth0`: interfaz virtual del entorno LXD que da acceso a Internet real (se conecta a lxdbr0). **Ya existe y ya tiene IP asignada por el entorno del labo. No la tocamos.**
+- `eth0`: Red31 → conecta con router3. **Esta la configuramos nosotros.**
+- `eth1`: interfaz virtual del entorno LXD que da acceso a Internet real (se conecta a lxdbr0). **Ya existe y ya tiene IP asignada por el entorno del labo. No la tocamos.**
 
 ```bash
 vtysh
